@@ -15,15 +15,13 @@ pipeline {
         stage('test') {
 
             steps {
+                setBuildStatus("Build succeeded", "PENDING");
                 echo "Clean fabcar"
             }
         }
     }
 
     post {
-        success {
-            setBuildStatus("Build succeeded", "SUCCESS");
-        }
         failure {
             setBuildStatus("Build failed", "FAILURE");
         } 
